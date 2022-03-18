@@ -1,0 +1,5 @@
+theme: jekyll-theme-minimal
+title: Back In Time Helper
+description: A KDE Plasma Dolphin Service Menu
+logo: https://raw.githubusercontent.com/c-hartmann/back-in-time-helper/main/assets/images/back-in-time-helper-logo.png
+show_downloads: true
