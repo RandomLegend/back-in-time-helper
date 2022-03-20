@@ -3,8 +3,8 @@
 ![logo](assets/images/back-in-time-helper-logo.png)
 
 A KDE 5 dolphin context menu extension (aka Service Menu), that let's you
-restore (or backup) any file or folder from within the context menu for any
-file(s) or folder(s) with the help of [Back In Time][bitdoc] and rsync(1).
+restore (or backup) any file or folder from within the context menu with
+the help of [Back In Time][bitdoc] and rsync(1).
 
 This Action gives the user a very basic but quick approach to the basic
 functionality of Back In Time:
