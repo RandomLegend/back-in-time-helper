@@ -27,6 +27,7 @@ Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=Back In Time
+X-KDE-Submenu[nl]=Back In Time
 MimeType=all/all;
 Icon=document-save-all
 TryExec=backintime
@@ -34,15 +35,18 @@ Actions=B_RestoreFromLastSnap;C_RestoreFromSnapshotSelectable;S_SyncThis;X_Refre
 
 [Desktop Action B_RestoreFromLastSnap]
 Name=Restore from last Snapshot
+Name[nl]=Recentste reservekopie herstellen
 Icon=document-save-all
 Exec=bash -c 'target="%f" ; last_snapshot_path="$(backintime --quiet last-snapshot-path)" ; test -e "${last_snapshot_path}/backup/$target" && backintime restore "%f" "" 0 || kdialog --error "Oooops .. seems there is no backup for this in last snapshot"'
 
 [Desktop Action C_RestoreFromSnapshotSelectable]
 Name=Restore from Snapshot (selectable)
+Name[nl]=Reservekopie herstellen (keuzelijst)
 Icon=document-save-all
 Exec=bash -c 'target="%f" ; snapshots_path="$(backintime --quiet snapshots-path)" ; ssid=$(kdialog --radiolist "Select Snapshot" $(for ssid in $(backintime --quiet snapshots-list | tail -5 | sort -r); do test -e "${snapshots_path}/$ssid/backup/$target" && echo "$ssid" "${ssid:0:4}-${ssid:4:2}-${ssid:6:2}_${ssid:9:2}:${ssid:11:2}:${ssid:13:2}" "off"; done)); test -n "$ssid" && backintime restore "$target" "" "$ssid" || kdialog --error "Oooops .. seems there is no backup for this in this snapshot or this is a bug to report"'
 
 [Desktop Action S_SyncThis]
 Name=Backup within last Snapshot
+Name[nl]=Toevoegen aan nieuwste reservekopie
 Icon=document-save-as-template
 Exec=bash -c 'source="%f" ; test -f "$source" && target="$source" || target="${source%/*}" ; rsync --archive "$source" "$(backintime --quiet last-snapshot-path)/backup/$target" && notify-send --app-name="Back In Time Helper" --icon=document-save --expire-time=10000 "Backed up:" "$source" || kdialog --error "Oooops .. seems snapshot path or medium is not available"'
