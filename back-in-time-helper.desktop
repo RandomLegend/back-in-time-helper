@@ -26,7 +26,7 @@
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 X-KDE-Priority=TopLevel
-X-KDE-Submenu=Back In Time
+X-KDE-Submenu=Back In Time ...
 MimeType=all/all;
 Icon=document-save-all
 TryExec=backintime
