@@ -48,4 +48,4 @@ Exec=bash -c 'target="%f" ; snapshots_path="$(backintime --quiet snapshots-path)
 Name=Backup within last Snapshot
 Name[nl]=Toevoegen aan nieuwste reservekopie
 Icon=document-save-as-template
-Exec=bash -c 'source="%f" ; test -f "$source" && target="$source" || target="${source%/*}" ; rsync --archive "$source" "$(backintime --quiet last-snapshot-path)/backup/$target" && notify-send --app-name="Back In Time Helper" --icon=document-save --expire-time=10000 "Backed up:" "$source" || kdialog --error "Oooops .. seems snapshot path or medium is not available"'
+Exec=bash -c 'source="%f" ; test -f "$source" && target="$source" || target="${source%/*}" ; rsync --recursive --times --devices --specials --links --hard-links "$source" "$(backintime --quiet last-snapshot-path)/backup/$target" && notify-send --app-name="Back In Time Helper" --icon=document-save --expire-time=10000 "Backed up:" "$source" || kdialog --error "Oooops .. seems snapshot path or medium is not available"'
