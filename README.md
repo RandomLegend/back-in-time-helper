@@ -2,31 +2,21 @@
 
 ![logo](assets/images/back-in-time-helper-logo.png)
 
-A KDE 5 dolphin context menu extension (aka Service Menu), that let's you
-restore (or backup) any file or folder from within the context menu with
-the help of [Back In Time][bitdoc] and rsync(1).
+# dolphin-backintime-servicemenu
 
-This Action gives the user a very basic but quick approach to the basic
-functionality of Back In Time:
+This is a bash script that is called from a Dolphin Service Menu to restore the selected folder. Also does proper error handling. This script was modified with the help of ChatGPT4. 
 
-* Restore (a target) from last Snapshot
-* Restore (a target) from (any user selectable) Snapshot
-* Back up (save aka sync) any target within the last Snapshot
+# Use at your own Risk
 
-A Target is any file or directory (still) existing and the bound of the
-context menu.
+# Installation:
 
-EXISTING TARGETS WILL NOT BE DELETED BUT RENAMED BEFORE RESTORING.
+Copy the BackInTime.desktop file and paste it into ~/.local/share/kio/servicemenus/
+then make it executable.
 
-After Installation this new action should be available in top level of the
-context meneu. (if more than one action applies to target, it will be
-located under "Actions").
+Next, copy the restore_snapshot.sh file into a folder you want, make it executable aswell and change your BackInTime.desktop from before so the "Exec=/path/to/your/restore_snapshot.sh" points to the correct path you chose.
 
-This is a clean room implementation based on [Back In Time][bitdoc], therefore
-it lacks any dependencies beside `backintime(1)` and `rsync(1)`.
+You can now enable it in your Dolphin Context Menu settings and start restoring your folders. You will find a backintime_debug.log file in your ~/.cache where you can see exactly what happens.
 
-If backintime is not installed this action will not show up in context menu.
-
-![in-action-screenshot](assets/images/back-in-time-helper-screen.png)
+Make sure you either understand what the bash script does, or let someone else read through it. I don't want your system to go downhill just because you copied some bash script off of github!
 
 [bitdoc]: https://backintime.readthedocs.io/en/latest/
